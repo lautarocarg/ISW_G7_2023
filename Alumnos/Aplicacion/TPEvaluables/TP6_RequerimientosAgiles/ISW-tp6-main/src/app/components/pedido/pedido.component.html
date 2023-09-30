@@ -1,0 +1,129 @@
+<div class="container text-center">
+  <h3>Detalles del Pedido</h3>
+  <hr>
+  <h6>Ingrese los productos que desea comprar</h6>
+  <form [formGroup]="FormPedido" class="row g-2">
+    <div class="col-lg-12 col-md-12 align-self-start text-area">
+        <textarea class="form-control" id="descripcionPedido" rows="1" maxlength="1000"></textarea>
+    </div>
+
+    <div class="text-danger" *ngIf="!descipcionCargada">
+          Debe ingresar una descripción
+    </div>
+
+    <div class="col-lg-6 col-md-12 align-self-start me-auto max-width">
+      <app-image-upload (imagenesCargadas)="onImagenesCargadas($event)"></app-image-upload>
+  </div>
+
+    <div class="col-lg-6 col-md-12 align-self-start me-auto max-width">
+      <button (click)="agregarPedido()" class="btn btn-primary btn-block" id="botonAgregarProducto"><img height="25vw" src="../../../assets/cart-plus-fill.svg"> Agregar producto</button>
+  </div>
+
+
+
+</form>
+
+  <div class="row g-2" [ngClass]="{'tabla-pedidos-mostrar': flagTablaPedidos === true}">
+    <div class="col-12">
+      <table class="tabla-pedidos">
+        <thead>
+          <tr>
+            <th>Descripción</th>
+            <th>Cantidad de Imágenes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let pedido of Pedidos">
+            <td>{{ pedido.Descripcion }}</td>
+            <td>{{ pedido.Imagenes.length }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div
+  class="text-danger"
+  *ngIf="validarPedidoCargado()"
+>
+  Debe cargar al menos un producto
+</div>
+  <h3>Dirección del local</h3>
+  <hr>
+  <form [formGroup]="FormDireccionLocal">
+    <!--Fila calle y numero-->
+      <div class="row g-3 align-items-left">
+          <!-- campo CALLE -->
+          <div class="col">
+            <div class="form-group">
+              <label class="col-form-label" for="calle"> Calle<span class="text-danger">*</span>: </label>
+              <input type="text" class="form-control" formControlName="Calle" placeholder="Calle" name="calle" id="calle">
+              </div>
+              <div
+              class="text-danger"
+              *ngIf="validarCampoRequerido('Calle')"
+            >
+              Dato Requerido.
+            </div>
+            <div
+            class="text-danger"
+            *ngIf="
+            validarPatron('Calle')
+            "
+          >
+          Por favor, ingrese solo letras y espacios (Máximo 50 carácteres)
+          </div>
+            </div>
+
+          <!-- campo NUMERO -->
+          <div class="col">
+            <div class="form-group">
+              <label class="col-form-label" for="numero"> Número<span class="text-danger">*</span>: </label>
+              <input type="number" class="form-control"
+              formControlName="Numero"  placeholder="Numero" name="numero" id="numero" required>
+            </div>
+            <div
+              class="text-danger"
+              *ngIf="validarCampoRequerido('Numero')"
+            >
+              Dato Requerido.
+            </div>
+            <div
+            class="text-danger"
+            *ngIf="
+            validarPatron('Numero')
+            "
+          >
+          Máximo 5
+          </div>
+        </div>
+      </div>
+
+      <div class="row full-width">
+          <!-- campo CIUDAD -->
+          <div class="form-group col-md-6">
+              <label class="etiqueta-campo" for="ciudad"> Ciudad<span
+                  class="text-danger">*</span>:</label>
+              <select class="form-control" formControlName="Ciudad" name="ciudad" id="ciudad">
+                  <option [value]="ciudad.Nombre" *ngFor="let ciudad of ItemCiudad" [selected]="ciudad" [selected]="ciudad.Nombre === 'Cosquin'">{{ciudad.Nombre}}</option>
+              </select>
+          </div>
+
+          <!-- campo REFERENCIA -->
+          <div class="form-group col-md-6">
+              <label class="" for="referencia"> Referencia (Opcional) </label>
+              <textarea class="form-control"
+              formControlName="Referencia"  placeholder="Referencia" name="referencia" id="referencia" rows="1" cols="50" resize="none"></textarea>
+          </div>
+      </div>
+    </form>
+  <div class="row mapa">
+    <div class="col">
+      <button (click)="cargarDireccionConMapa()"><img src="../../../assets/mapa-facu.png" alt=""></button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col btn-siguiente">
+      <button (click)="enviarFormulario()" class="btn btn-nav">Siguiente</button>
+    </div>
+  </div>
+</div>

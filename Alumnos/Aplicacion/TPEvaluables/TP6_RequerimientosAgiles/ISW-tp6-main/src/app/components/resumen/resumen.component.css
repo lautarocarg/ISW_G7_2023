@@ -1,0 +1,14 @@
+.titulo-resumen{
+    /*text-decoration: underline;*/
+    text-align: center;
+}
+.total{
+    text-align: right;
+    padding-bottom: 10px;
+    margin-right: 10px;
+    font-size: 3rem;
+}
+
+.tabla-pedidos{
+  width: 100%;
+}
