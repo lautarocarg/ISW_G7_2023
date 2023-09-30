@@ -1,0 +1,23 @@
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#referencia {
+  resize: none;
+}
+
+.tabla-pedidos{
+  width: 100%;
+}
+
+.tabla-pedidos th:first-child {
+  width: 70%;
+}
+
+@media screen and (max-device-width: 991px) {
+  #botonAgregarProducto{
+    width: 100%;
+  }
+}

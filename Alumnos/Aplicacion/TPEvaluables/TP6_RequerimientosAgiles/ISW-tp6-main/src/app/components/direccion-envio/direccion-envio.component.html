@@ -1,0 +1,87 @@
+<div class="container">
+  <h3>Dirección del envio</h3>
+  <hr>
+  <form [formGroup]="FormDireccionEnvioPedido">
+    <!--Fila calle y numero-->
+      <div class="row g-3 align-items-left">
+          <!-- campo CALLE -->
+          <div class="col">
+            <div class="form-group">
+              <label class="col-form-label" for="calle"> Calle<span class="text-danger">*</span>: </label>
+              <input type="text" class="form-control" formControlName="Calle" placeholder="Calle" name="calle" id="calle">
+              </div>
+              <div
+              class="text-danger"
+              *ngIf="validarCampoRequerido('Calle')"
+            >
+              Dato Requerido.
+            </div>
+            <div
+            class="text-danger"
+            *ngIf="
+            validarPatron('Calle')
+            "
+          >
+          Por favor, ingrese solo letras y espacios (Máximo 50 carácteres)
+          </div>
+            </div>
+
+          <!-- campo NUMERO -->
+          <div class="col">
+            <div class="form-group">
+              <label class="col-form-label" for="numero"> Número<span class="text-danger">*</span>: </label>
+              <input type="number" class="form-control"
+              formControlName="Numero"  placeholder="Numero" name="numero" id="numero" required>
+            </div>
+            <div
+            class="text-danger"
+            *ngIf="validarCampoRequerido('Numero')"
+          >
+            Dato Requerido.
+          </div>
+          <div
+          class="text-danger"
+          *ngIf="
+          validarPatron('Numero')
+          "
+        >
+        Máximo 5
+        </div>
+        </div>
+      </div>
+
+      <div class="row full-width">
+          <!-- campo CIUDAD -->
+          <div class="form-group col-md-6">
+              <label class="etiqueta-campo" for="ciudad"> Ciudad<span
+                  class="text-danger">*</span>: </label>
+              <select class="form-control" formControlName="Ciudad" name="ciudad" id="ciudad" >
+                  <option [value]="ciudad.Nombre" *ngFor="let ciudad of ItemCiudad" [selected]="ciudad" [selected]="ciudad.Nombre === 'Cosquin'">{{ciudad.Nombre}}</option>
+              </select>
+          </div>
+
+          <!-- campo REFERENCIA -->
+          <div class="form-group col-md-6">
+              <label class="" for="referencia"> Referencia (Opcional) </label>
+              <textarea class="form-control"
+              formControlName="Referencia"  placeholder="Referencia" name="referencia" id="referencia" rows="1" cols="50" resize="none"></textarea>
+          </div>
+      </div>
+    </form>
+    <div class="row mapa">
+      <div class="col">
+        <button (click)="cargarDireccionConMapa()"><img src="../../../assets/mapa-local.png" alt=""></button>
+      </div>
+    </div>
+
+  <div class="row justify-content-between">
+    <div class="col btn-atras">
+      <button (click)="volverAlPedido()" class="btn btn-nav">Atrás</button>
+    </div>
+    <div class="col btn-siguiente">
+      <button (click)="enviarFormulario()" class="btn btn-nav">Siguiente</button>
+    </div>
+  </div>
+</div>
+
+

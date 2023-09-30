@@ -1,0 +1,22 @@
+<div class="container text-center">
+  <h1>
+    <span style="font-size: 54px; color: #01A7C2; font-weight: bold;"></span>
+    <span style="font-size: 50px; color: #EAEBED; font-weight: bold;">Deliver</span>
+    <span style="font-size: 54px; color: #01A7C2; font-weight: bold;">Eat</span>
+    <span style="font-size: 50px; color: #EAEBED; font-weight: bold;">!</span>
+    <span style="font-size: 54px; color: #01A7C2; font-weight: bold;"></span>
+  </h1>
+  <div class="wrapper">
+    <app-pedido *ngIf="estado === 1" (cambioEstado)="onCambioEstado($event)" (pedidoCreado)="onPedidoCreado($event)"></app-pedido>
+
+    <app-direccion-envio *ngIf="estado === 2" (cambioEstado)="onCambioEstado($event)" (direccionEnvioCreada)="onDireccionEnvioCreada($event)"></app-direccion-envio>
+
+    <app-resumen [pedidos]="pedido" [direccionEnvio]="direccionEnvio" [direccionPedido]="direccionPedido" *ngIf="estado === 3" (cambioEstado)="onCambioEstado($event)" (totalPedidoYEnvio)="onTotalCalculado($event)"></app-resumen>
+
+    <app-medio-de-pago *ngIf="estado === 4" (cambioEstado)="onCambioEstado($event)" [total]="totalPedido"></app-medio-de-pago>
+
+    <app-entrega *ngIf="estado === 5" (cambioEstado)="onCambioEstado($event)"></app-entrega>
+
+    <app-pantalla-final *ngIf="estado === 6" (cambioEstado)="onCambioEstado($event)" ></app-pantalla-final>
+  </div>
+</div>
