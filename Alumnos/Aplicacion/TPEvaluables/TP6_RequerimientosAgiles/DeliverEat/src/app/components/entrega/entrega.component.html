@@ -1,0 +1,83 @@
+<div class="container">
+  <h3 class="titulo-plantilla text-dark">Fecha de entrega</h3>
+  <hr />
+
+  <form [formGroup]="FormTipoEntrega" name="FormTipoEntrega" class="container">
+    <!-- campo FORMA DE ENTREGA -->
+    <div class="form-group row">
+      <label for="formaEntrega">
+        Forma de Entrega <span class="text-danger">*</span>:
+      </label>
+      <select
+        formControlName="Forma"
+        class="form-control"
+        name="formaEntrega"
+        id="formaEntrega"
+        [(ngModel)]="tipoEntregaSeleccionada"
+      >
+        <option value="loAntesPosible">Lo antes posible</option>
+        <option value="fechaHoraParticular">Elegir fecha y hora</option>
+      </select>
+    </div>
+  </form>
+
+  <!-- campo FECHA Y HORA -->
+  <form [formGroup]="FormFechaHora">
+    <div
+      class="container"
+      *ngIf="tipoEntregaSeleccionada == 'fechaHoraParticular'"
+    >
+      <div class="row form-group">
+        <!--campo FECHA-->
+        <div class="col-lg-6 col-md-12" id="fecha">
+          <label for="Fecha">
+            Fecha de Entrega <span class="text-danger">*</span></label
+          >
+          <input
+            type="text"
+            class="form-control"
+            formControlName="Fecha"
+            placeholder="DD/MM/AAAA"
+          />
+          <div class="text-danger" *ngIf="validarCampoRequerido('Fecha')">
+            Dato Requerido.
+          </div>
+          <div class="text-danger" *ngIf="validarPatron('Fecha')">
+            Ingrese una fecha válida (DD/MM/AAAA)
+          </div>
+        </div>
+
+        <!--campo HORA-->
+        <div class="col-lg-6 col-md-12" id="hora">
+          <label for="Hora"
+            >Hora de Entrega<span class="text-danger">*</span></label
+          >
+          <input
+            class="form-control"
+            type="text"
+            formControlName="Hora"
+            placeholder="HH:MM"
+          />
+          <div class="text-danger" *ngIf="validarCampoRequerido('Hora')">
+            Dato Requerido.
+          </div>
+          <div class="text-danger" *ngIf="validarPatron('Hora')">
+            Ingrese una hora válidad (HH:MM)
+          </div>
+        </div>
+        <div class="text-danger" *ngIf="!fechaValida && formularioEnviado">
+          El tiempo de entrega debe ser menor a una semana (a partir de hoy) 
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <div class="row justify-content-between mt-4">
+    <div class="col btn-atras">
+      <button (click)="volverAMedioDePago()" class="btn btn-nav">Atrás</button>
+    </div>
+    <div class="col btn-siguiente">
+      <button (click)="confirmarEntrega()" class="btn btn-nav">Siguiente</button>
+    </div>
+  </div>
+</div>

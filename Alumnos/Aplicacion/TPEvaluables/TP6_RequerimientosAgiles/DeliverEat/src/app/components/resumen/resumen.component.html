@@ -1,0 +1,103 @@
+<div class="container container-resumen">
+  <h2 class="titulo-resumen">Resumen del Pedido</h2>
+
+
+  <h2>Tu Pedido</h2>
+  <hr>
+  <div class="row g-2">
+    <div class="col-12">
+      <table class="tabla-pedidos tabla-resumen">
+        <thead>
+          <tr>
+            <th>Descripción</th>
+            <th>Cantidad de Imágenes</th>
+            <th>Precio</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let pedido of pedidos; let i = index">
+            <td>{{ pedido.Descripcion }}</td>
+            <td>{{ pedido.Imagenes.length }}</td>
+            <td>${{ pedido.Precio }}</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="2">Total</td>
+            <td>${{ calcularTotalPedido() }}</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+
+  <h2>Dirección del Local</h2>
+  <hr>
+  <div class="row g-2">
+    <div class="col-12">
+      <table class="tabla-pedidos tabla-resumen">
+        <thead>
+          <tr>
+            <th>Calle</th>
+            <th>Número</th>
+            <th>Ciudad</th>
+            <th>Referencia</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ direccionPedido.Calle }}</td>
+            <td>{{ direccionPedido.Numero }}</td>
+            <td>{{ direccionPedido.Ciudad }}</td>
+            <td>{{ direccionPedido.Referencia }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <h2>Dirección de Envío</h2>
+  <hr>
+  <div class="row g-2">
+    <div class="col-12">
+      <table class="tabla-pedidos tabla-resumen">
+        <thead>
+          <tr>
+            <th>Calle</th>
+            <th>Número</th>
+            <th>Ciudad</th>
+            <th>Referencia</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ direccionEnvio.Calle }}</td>
+            <td>{{ direccionEnvio.Numero }}</td>
+            <td>{{ direccionEnvio.Ciudad }}</td>
+            <td>{{ direccionEnvio.Referencia }}</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td>Costo</td>
+            <td colspan="3">${{ calcularCostoEnvio() }}</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col total">
+      Total: ${{ calcularTotal() }}
+    </div>
+  </div>
+
+  <div class="row justify-content-between">
+    <div class="col btn-atras">
+      <button (click)="volverAlEnvio()" class="btn btn-nav">Atrás</button>
+    </div>
+    <div class="col btn-siguiente">
+      <button (click)="confirmarDatos()" class="btn btn-nav">Confirmar</button>
+    </div>
+  </div>
+</div>

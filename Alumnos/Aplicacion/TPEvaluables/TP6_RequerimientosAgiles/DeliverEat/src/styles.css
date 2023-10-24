@@ -1,0 +1,99 @@
+/* You can add global styles to this file, and also import other style files */
+*{
+  margin: 0;
+  padding: 0;
+}
+
+/* Importa la fuente Montserrat desde Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+/* Aplica la fuente Montserrat a todos los elementos de la página */
+body {
+  background-color: #006989;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.btn-nav{
+  background-color: #EAEBED;
+}
+
+button:hover{
+  background-color: #006989 !important;
+}
+
+.btn-siguiente{
+  text-align: right;
+}
+
+.btn-atras{
+  text-align: start;
+}
+
+.btn-primary{
+  background-color: #01A7C2;
+  border-color: #01A7C2;
+  color: #fff;
+}
+.btn-primary:active{
+  background-color: #006989;
+  border-color: #006989;
+}
+.btn-primary:hover{
+  background-color: #006989;
+  border-color: #006989;
+}
+
+h3{
+  text-align: left;
+  padding: 10px 0 0 0;
+}
+h2{
+  text-align: left;
+  padding: 5px 0 0 0;
+}
+h6{
+  text-align: left;
+}
+
+.text-area{
+  text-align: left;
+}
+
+.mapa{
+  padding: 20px 0;
+}
+
+.mapa img{
+  height: 30vw;
+}
+
+.tabla-pedidos-mostrar{
+  display: none;
+}
+
+.tabla-pedidos {
+  border-collapse: collapse;
+  margin: 10px 0;
+}
+
+.tabla-pedidos th {
+  background-color: #006989
+  ;
+  text-align: center;
+  padding: 5px;
+  border: 1.5px solid black;
+}
+
+.tabla-pedidos td {
+  padding: 5px;
+  border: 1.5px solid black;
+  background-color: #EAEBED;
+  color: #000000
+;
+}
+
+@media screen and (max-device-width: 991px) {
+  .tabla-resumen{
+    font-size: 0.5rem;
+  }
+}

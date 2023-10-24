@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="imagenes-btn">
+        <label for="fileInput" class="custom-file-upload">
+            <img height="25vw" src="../../../assets/file-earmark-arrow-up-fill.svg"> Subir imagenes
+        </label>
+        <input id="fileInput" type="file" (change)="onFileSelected($event)" accept=".jpg" multiple />
+    </div>
+    <div class="imageList">
+        <h6 *ngIf="archivosSubidos">Archivos subidos:</h6>
+        <ul>
+          <li *ngFor="let fileName of uploadedFileNames">{{ fileName }}</li>
+        </ul>
+    </div>
+</div>

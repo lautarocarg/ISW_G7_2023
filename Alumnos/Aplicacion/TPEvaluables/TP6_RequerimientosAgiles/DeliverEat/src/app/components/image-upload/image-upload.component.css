@@ -1,0 +1,38 @@
+.imageList{
+    text-align: left;
+    display: inline-block;
+}
+/* Estilos para el botón personalizado */
+.custom-file-upload {
+    display: inline-block;
+    padding: 6px 12px;
+    background-color: #01A7C2;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.custom-file-upload:hover {
+    background-color: #006989;
+    border-color: #006989;
+}
+
+.custom-file-upload:active {
+    background-color: #006989; /* Cambia el color al hacer clic */
+}
+/* Oculto el diseño del input por defecto */
+#fileInput {
+    display: none;
+}
+
+h6{
+    padding-top: 10px;
+}
+
+@media screen and (max-device-width: 991px) {
+  .container{
+    padding: 0;
+  }
+  .imagenes-btn, #fileInput, .custom-file-upload{
+    width: 100%;
+  }
+}
